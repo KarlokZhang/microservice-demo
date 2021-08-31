@@ -4,7 +4,7 @@ import express from 'express';
 
 import accessEnv from '#root/helpers/accessEnv';
 
-const PORT = accessEnv('PORT', 7100);
+const PORT = accessEnv('PORT', 7101);
 
 const app = express();
 
@@ -18,5 +18,5 @@ app.use(
 );
 
 app.listen(PORT, '0.0.0.0', () => {
-  console.info(`Listing services listing on ${PORT}`);
+  console.info(`User services listing on ${PORT}`);
 });

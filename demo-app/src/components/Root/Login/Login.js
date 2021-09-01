@@ -38,14 +38,16 @@ const mutation = gql`
 `;
 
 const Login = () => {
+  const [createUserSession] = useMutation(mutation);
   const {
     formState: { isSubmitting },
     handleSubmit,
     register,
   } = useForm();
 
-  const onSubmit = handleSubmit(({ email, password }) => {
-    console.log(email, password);
+  const onSubmit = handleSubmit(async ({ email, password }) => {
+    const result = await createUserSession({ variables: { email, password } });
+    console.log(result);
   });
   return (
     <form onSubmit={onSubmit}>

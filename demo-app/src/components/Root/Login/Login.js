@@ -1,3 +1,5 @@
+import { useMutation } from '@apollo/react-hooks';
+import gql from 'graphql-tag';
 import React from 'react';
 import styled from 'styled-components';
 import { useForm } from 'react-hook-form';
@@ -21,6 +23,18 @@ const LabelText = styled.strong`
 const LoginButton = styled.button`
   display: inline-block;
   margin-top: 0.5rem;
+`;
+
+const mutation = gql`
+  mutation ($email: String!, $password: String!) {
+    createUserSession(email: $email, password: $password) {
+      id
+      user {
+        email
+        id
+      }
+    }
+  }
 `;
 
 const Login = () => {
